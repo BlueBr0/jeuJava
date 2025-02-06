@@ -27,7 +27,7 @@ public class GUI implements ActionListener
     }
 
    public void afficheImage( String nomImage) {
-	   	URL imageURL = this.getClass().getClassLoader().getResource("jeu/images/" + nomImage);
+	   	URL imageURL = this.getClass().getClassLoader().getResource("src/main/img" + nomImage);
 	   	if( imageURL != null ) {
         	image.setIcon( new ImageIcon( imageURL ));
             fenetre.pack();
@@ -54,8 +54,20 @@ public class GUI implements ActionListener
         JPanel panel = new JPanel();
         image = new JLabel();
 
+
+        //ImageIcon imageLabel = new ImageIcon("src/main/img/16x16png.png");
+
+
+
+
+
+        JLabel label = new JLabel();
+        label.setIcon(new ImageIcon(new ImageIcon("src/main/img/16x16png.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+
+        fenetre.add(label);
+
         panel.setLayout(new BorderLayout());
-        panel.add(image, BorderLayout.NORTH);
+        //panel.add(image, BorderLayout.NORTH);
         panel.add(listScroller, BorderLayout.CENTER);
         panel.add(entree, BorderLayout.SOUTH);
 

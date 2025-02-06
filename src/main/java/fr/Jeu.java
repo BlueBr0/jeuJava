@@ -10,7 +10,10 @@ public class Jeu {
         gui = null;
     }
 
-    public void setGUI( GUI g) { gui = g; afficherMessageDeBienvenue(); }
+    public void setGUI( GUI g) {
+        gui = g;
+        afficherMessageDeBienvenue();
+    }
     
     private void creerCarte() {
         Zone [] zones = new Zone [4];
