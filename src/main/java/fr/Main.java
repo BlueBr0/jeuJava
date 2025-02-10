@@ -2,9 +2,13 @@ package fr;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.HashMap;
 
 public class Main {
+
+	HashMap<String, BufferedImage> textures = new HashMap<String, BufferedImage>();
 	public static void main(String[] args) {
 		/*Jeu jeu = new Jeu();
 		GUI gui = new GUI( jeu);
@@ -20,11 +24,28 @@ public class Main {
 		frame.setLayout(null); // Disable layout manager for absolute positioning
 
 
-		testGenerate(frame, imageURL);
+		//testGenerate(frame, imageURL);
+
+
 
 		// Make the frame visible
 		frame.setVisible(true);
 
+	}
+
+	public void paintComponent(Graphics2D g){
+		Graphics2D g2d = (Graphics2D) g;
+
+		// Set nearest-neighbor interpolation to prevent blurring
+		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+
+		// Scale factor (e.g., 4x)
+		int scale = 4;
+
+		// Draw textures with nearest-neighbor scaling
+		g2d.drawImage(textures.get("grass"), 50, 50, 16 * scale, 16 * scale, null);
+		g2d.drawImage(textures.get("water"), 100, 50, 16 * scale, 16 * scale, null);
+		g2d.drawImage(textures.get("stone"), 150, 50, 16 * scale, 16 * scale, null);
 	}
 
 	public static void testGenerate(JFrame fenetre,URL image){
@@ -58,6 +79,7 @@ public class Main {
 				fenetre.add(label);
 
 			}
+
 			yAxes += 50;
 			xAxes = 0;
 		}
