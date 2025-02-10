@@ -1,4 +1,4 @@
-package fr;
+package fr.Graphics;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -21,6 +21,8 @@ public class TextureAtlas {
         names.put("END", "/ENDPlaceholder.png");
         names.put("ENEMY", "/ennemyPlaceholder.png");
         names.put("PLAYER", "/playerPlaceHolder.png");
+        names.put("LOOT", "/lootPlaceholder.png");
+        names.put("PH", "/placeholder.png");
 
         try {
 
