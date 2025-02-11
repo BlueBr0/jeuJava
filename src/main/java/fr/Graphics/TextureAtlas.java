@@ -20,6 +20,7 @@ public class TextureAtlas {
     private final String PLAYER = "PLAYER";
     private final String LOOT = "LOOT";
     private final String PH = "PH";
+    private final String VOID = "VOID";
 
 
 
@@ -32,6 +33,7 @@ public class TextureAtlas {
         names.put(PLAYER, "/playerPlaceHolder.png");
         names.put(LOOT, "/lootPlaceholder.png");
         names.put(PH, "/placeholder.png");
+        names.put(VOID, "/voidPlaceHolder.png");
 
         try {
 
@@ -40,7 +42,7 @@ public class TextureAtlas {
                 String path = entry.getValue();
 
                 URL resource = getClass().getResource(path);
-                System.out.println(resource);
+                //System.out.println(resource);
                 if (resource == null) {
                     throw new IOException("Image not found: " + path);
                 }

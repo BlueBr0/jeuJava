@@ -7,13 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Map;
 
 public class DrawMap extends JPanel {
 
     TextureAtlas textureAtlas;
-
-    MapContainer map = new MapContainer();
+    MapContainer map = new MapContainer("/Data/MapTest.json");
 
     public DrawMap() {
         try {
@@ -27,6 +25,11 @@ public class DrawMap extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        int scale = 50;
+
+
+
+        //g.drawRect(0,0,799,799);
 
 
         for(Cell c : map.getMap()){
@@ -35,33 +38,23 @@ public class DrawMap extends JPanel {
             switch (c.getType()){
                 case "WALL":
                     image = textureAtlas.textures.get("WALL");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),100, 100, this);
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
                     break;
                 case "ENEMY":
                     image = textureAtlas.textures.get("ENEMY");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),100, 100, this);
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
                     break;
                 case "PLAYER":
                     image = textureAtlas.textures.get("PLAYER");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),100, 100, this);
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                    break;
+                case "VOID":
+                    image = textureAtlas.textures.get("VOID");
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
                     break;
             }
 
         }
-
-
-        /*
-
-         int x = 0;
-        for(Map.Entry<String, BufferedImage> entry : textureAtlas.textures.entrySet()){
-
-            if (entry.getValue() != null) {
-                BufferedImage image = entry.getValue();
-                g.drawImage(image, x, 0,100, 100, this);
-            }
-            x = x + 100;
-        }
-        */
 
     }
 
@@ -70,7 +63,7 @@ public class DrawMap extends JPanel {
         JFrame frame = new JFrame("Image with Graphics");
         DrawMap panel = new DrawMap();
 
-        JTextField entree = new JTextField(34);
+        //JTextField entree = new JTextField(34);
 
         JTextArea texte = new JTextArea();
         texte.setEditable(false);
