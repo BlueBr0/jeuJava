@@ -13,16 +13,25 @@ public class TextureAtlas {
 
     private HashMap<String, String> names = new HashMap<>();
 
+    private final String WALL = "WALL";
+    private final String START = "START";
+    private final String END = "END";
+    private final String ENEMY = "ENEMY";
+    private final String PLAYER = "PLAYER";
+    private final String LOOT = "LOOT";
+    private final String PH = "PH";
+
+
 
     public TextureAtlas() throws IOException {
 
-        names.put("WALL", "/wallPlaceholder.png");
-        names.put("START", "/STARTPlaceHolder.png");
-        names.put("END", "/ENDPlaceholder.png");
-        names.put("ENEMY", "/ennemyPlaceholder.png");
-        names.put("PLAYER", "/playerPlaceHolder.png");
-        names.put("LOOT", "/lootPlaceholder.png");
-        names.put("PH", "/placeholder.png");
+        names.put(WALL, "/wallPlaceholder.png");
+        names.put(START, "/STARTPlaceHolder.png");
+        names.put(END, "/ENDPlaceholder.png");
+        names.put(ENEMY, "/ennemyPlaceholder.png");
+        names.put(PLAYER, "/playerPlaceHolder.png");
+        names.put(LOOT, "/lootPlaceholder.png");
+        names.put(PH, "/placeholder.png");
 
         try {
 
