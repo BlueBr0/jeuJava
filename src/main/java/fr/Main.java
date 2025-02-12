@@ -33,21 +33,6 @@ public class Main {
 
 	}
 
-	public void paintComponent(Graphics2D g){
-		Graphics2D g2d = (Graphics2D) g;
-
-		// Set nearest-neighbor interpolation to prevent blurring
-		g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
-
-		// Scale factor (e.g., 4x)
-		int scale = 4;
-
-		// Draw textures with nearest-neighbor scaling
-		g2d.drawImage(textures.get("grass"), 50, 50, 16 * scale, 16 * scale, null);
-		g2d.drawImage(textures.get("water"), 100, 50, 16 * scale, 16 * scale, null);
-		g2d.drawImage(textures.get("stone"), 150, 50, 16 * scale, 16 * scale, null);
-	}
-
 	public static void testGenerate(JFrame fenetre,URL image){
 
 		final int taille = 5;

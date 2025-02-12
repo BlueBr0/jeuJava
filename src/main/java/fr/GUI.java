@@ -62,7 +62,7 @@ public class GUI implements ActionListener
 
 
         JLabel label = new JLabel();
-        label.setIcon(new ImageIcon(new ImageIcon("src/main/img/16x16png.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        //label.setIcon(new ImageIcon(new ImageIcon("src/main/img/16x16png.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
 
         fenetre.add(label);
 
