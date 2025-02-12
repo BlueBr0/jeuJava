@@ -22,7 +22,7 @@ public class MapContainer {
 
         InputStream inputStream = getClass().getResourceAsStream(filepath);
         if (inputStream == null) {
-            System.err.println(STR."Erreur : Fichier \{filepath} introuvable !");
+            System.err.println("Erreur : Fichier " + "filepath " + " introuvable !");
             return;
             //Remplacer avec une Exception Custom
         }
