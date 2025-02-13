@@ -1,51 +1,50 @@
 package fr.Graphics;
 
 import fr.Map.Cells.Cell;
-import fr.Map.MapContainer;
-import fr.Utilities.DeleteActionWrapper;
+import fr.Map.MapLoader;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.DefaultEditorKit;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 public class DrawMap extends JPanel {
 
     TextureAtlas textureAtlas;
-    MapContainer map = new MapContainer("/Data/MapTest.json");
+    MapLoader map;
 
-    public DrawMap() {
+    //Taille par défaut
+    private final int scale = 50;
+
+    public DrawMap(String mapJsonFile) {
         try {
+            map = new MapLoader(mapJsonFile, scale);
             textureAtlas = new TextureAtlas();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
+    public void changeMap(String mapJsonFile){
+        map = new MapLoader(mapJsonFile, scale);
+        repaint();
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
-        int scale = 50;
-
-
-
-        //g.drawRect(0,0,799,799);
-
 
         for(Cell c : map.getMap()){
             //System.out.println(c.toString());
             BufferedImage image;
             switch (c.getType()){
-                case "WALL":
-                    image = textureAtlas.textures.get("WALL");
+                case "WALLBOTTOM":
+                    image = textureAtlas.textures.get("WALLBOTTOM");
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                    break;
+                case "WALLCORNER":
+                    image = textureAtlas.textures.get("WALLCORNER");
                     g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
                     break;
                 case "ENEMY":
@@ -60,13 +59,21 @@ public class DrawMap extends JPanel {
                     image = textureAtlas.textures.get("VOID");
                     g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
                     break;
+                case "LOOT":
+                    image = textureAtlas.textures.get("LOOT");
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                    break;
+                default:
+                    image = textureAtlas.textures.get("VOID");
+                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                    break;
             }
 
         }
 
     }
 
-    private Font loadCustomFont(String path, float size) {
+    public static Font loadCustomFont(String path, float size) {
         try {
             File fontFile = new File(path);
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -78,6 +85,7 @@ public class DrawMap extends JPanel {
     }
 
     //Méthode de tests
+    /*
     public void main(String[] args) throws IOException {
         JFrame frame = new JFrame("Jeu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,5 +187,5 @@ public class DrawMap extends JPanel {
 
         texte.append("Player :\r\nPV : 20\r\nBULLETS: 10\r\n");
 
-    }
+    }*/
 }

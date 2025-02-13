@@ -12,6 +12,8 @@ public class GUI implements ActionListener
     private JTextArea texte;
     private JLabel image;
 
+
+
     public GUI(Jeu j) {
         jeu = j;
         creerGUI();

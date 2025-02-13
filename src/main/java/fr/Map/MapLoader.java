@@ -8,12 +8,15 @@ import com.google.gson.Gson;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class MapContainer {
+public class MapLoader {
 
     private final ArrayList<Cell> map;
 
-    public MapContainer(String filepath){
+    private int scale;
+
+    public MapLoader(String filepath, int scale){
         this.map = new ArrayList<>();
+        this.scale = scale;
         loadMap(filepath);
     }
 
@@ -38,14 +41,16 @@ public class MapContainer {
                 String row = mapArray.get(y).getAsString();
                 for (int x = 0; x < row.length(); x++) {
                     char cellType = row.charAt(x);
-                    int posX = x * 50;
-                    int posY = y * 50;
+                    int posX = x * scale;
+                    int posY = y * scale;
 
                     switch (cellType) {
-                        case 'W': map.add(new CellWall(posX, posY)); break;
+                        case 'W': map.add(new CellWallCorner(posX, posY)); break;
                         case 'P': map.add(new CellPlayer(posX, posY)); break;
                         case 'E': map.add(new CellEnemy(posX, posY)); break;
                         case 'S': map.add(new CellVoid(posX, posY)); break;
+                        case 'B': map.add(new CellWallBottom(posX, posY)); break;
+                        case 'L': map.add(new CellLoot(posX, posY)); break;
                     }
                 }
             }
