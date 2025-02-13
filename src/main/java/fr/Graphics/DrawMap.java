@@ -66,7 +66,7 @@ public class DrawMap extends JPanel {
 
     }
 
-    private Font loadCustomFont(String path, float size) {
+    private static Font loadCustomFont(String path, float size) {
         try {
             File fontFile = new File(path);
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -78,12 +78,12 @@ public class DrawMap extends JPanel {
     }
 
     //Méthode de tests
-    public void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         JFrame frame = new JFrame("Jeu");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1120, 790);
 
-        URL resource = getClass().getResource("/LogoJJ.png");
+        URL resource = DrawMap.class.getResource("/LogoJJ.png");
         //System.out.println(resource);
         BufferedImage image;
         if (resource == null) {
