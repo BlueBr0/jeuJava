@@ -13,7 +13,9 @@ public class TextureAtlas {
 
     private HashMap<String, String> names = new HashMap<>();
 
-    private final String WALL = "WALL";
+    private final String WALLC = "WALLCORNER";
+
+    private final String WALLB = "WALLBOTTOM";
     private final String START = "START";
     private final String END = "END";
     private final String ENEMY = "ENEMY";
@@ -24,16 +26,21 @@ public class TextureAtlas {
 
 
 
+
+
     public TextureAtlas() throws IOException {
 
-        names.put(WALL, "/wallPlaceholder.png");
+        names.put(WALLC, "/Sprites/SpriteWallCorner.png");
+        names.put(WALLB, "/Sprites/SpriteWallBottom.png");
         names.put(START, "/STARTPlaceHolder.png");
         names.put(END, "/ENDPlaceholder.png");
-        names.put(ENEMY, "/ennemyPlaceholder.png");
-        names.put(PLAYER, "/playerPlaceHolder.png");
-        names.put(LOOT, "/lootPlaceholder.png");
+        names.put(ENEMY, "/Sprites/ZombieSprite.png");
+        names.put(PLAYER, "/Sprites/PlayerSprite.png");
+        names.put(LOOT, "/Sprites/LootSprite.png");
         names.put(PH, "/placeholder.png");
         names.put(VOID, "/voidPlaceHolder.png");
+
+
 
         try {
 
