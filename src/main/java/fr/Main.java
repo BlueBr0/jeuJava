@@ -1,10 +1,16 @@
 package fr;
 
 
+import fr.DataBase.DbConnection;
+
 import java.io.IOException;
+
+import java.awt.EventQueue;
+import java.sql.*;
 
 
 public class Main {
+
 
 
 	public static void main(String[] args) throws IOException {
@@ -13,7 +19,22 @@ public class Main {
 		jeu.setGUI( gui);*/
 
 
-		GUI2 gui = new GUI2();
+		String BDD = "scoreszombie_bdd";
+		String url = "jdbc:mysql://mysql-scoreszombie.alwaysdata.net:3306/scoreszombie_bdd";
+		String user = "400801";
+		String passwd = "G84tBuYsyJ4OyHM";
+
+
+
+		//GUI2 gui = new GUI2();
+
+		String nomCarte = "OUT";
+
+		DbConnection.DbgetPlayers(nomCarte);
+
+
+
+
 
 	}
 
