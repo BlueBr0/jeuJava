@@ -28,9 +28,9 @@ public class Main {
 
 		//GUI2 gui = new GUI2();
 
-		String nomCarte = "OUT";
+		//String nomCarte = "OUT";
 
-		DbConnection.DbgetPlayers(nomCarte);
+		DbConnection.DbAddScore();
 
 
 

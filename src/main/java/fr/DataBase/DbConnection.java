@@ -9,6 +9,9 @@ public class DbConnection {
     public static final String user = "400801";
     public static final String passwd = "G84tBuYsyJ4OyHM";
 
+    //INSERT INTO score (nomjoueur, temps, idniveau, coderang, points) VALUES
+    //('GREG', '18:00:00', 'OUT1', 'A', 210),
+
     public static Connection getConnection() {
         Connection conn = null;
 
@@ -25,7 +28,38 @@ public class DbConnection {
         return conn;
     }
 
-    public static void DbgetPlayers(String idMap){
+    public static void DbAddScore() {
+        try {
+
+            Connection conn = getConnection();
+
+            if (conn != null) {
+                Statement stmt = conn.createStatement();
+
+                String sql = "INSERT INTO score (nomjoueur, temps, idniveau, coderang, points) " +
+                        "VALUES ('ENZO', '18:00:00', 'OUT2', 'A', 210)";
+
+
+                int rowsInserted = stmt.executeUpdate(sql);
+
+
+                if (rowsInserted > 0) {
+                    System.out.println("Added 1 row");
+                }
+
+                stmt.close();
+                conn.close();
+            } else {
+                throw new SQLException("Connection failed.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error occurred");
+        }
+    }
+
+
+    public static void DbGetPlayers(String idMap){
         try {
 
             Connection conn = getConnection();
@@ -71,7 +105,6 @@ public class DbConnection {
         } catch (Exception e){
             e.printStackTrace();
             System.out.println("Erreur");
-            System.exit(0);
         }
     }
 }
