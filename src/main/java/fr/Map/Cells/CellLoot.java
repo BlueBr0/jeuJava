@@ -1,11 +1,14 @@
 package fr.Map.Cells;
 
+import fr.Utilities.Loot;
+
 public class CellLoot extends Cell{
 
-    //private Loot loot;
+    private Loot loot;
 
     public CellLoot(int x, int y) {
         super(x, y);
+        this.loot = new Loot();
     }
 
     @Override

@@ -25,9 +25,6 @@ public class TextureAtlas {
     private final String VOID = "VOID";
 
 
-
-
-
     public TextureAtlas() throws IOException {
 
         names.put(WALLC, "/Sprites/SpriteWallCorner.png");

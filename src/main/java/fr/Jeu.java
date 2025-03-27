@@ -1,7 +1,8 @@
 package fr;
 
 public class Jeu {
-	
+
+    /*
     private GUI gui; 
 	private Zone zoneCourante;
     
@@ -98,4 +99,6 @@ public class Jeu {
     	gui.afficher( "Au revoir...");
     	gui.enable( false);
     }
+    */
+
 }

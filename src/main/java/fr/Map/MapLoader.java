@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 
-public class MapLoader {
+public class MapLoader implements Iterable<Cell>{
 
     private final ArrayList<Cell> map;
 
@@ -60,8 +61,15 @@ public class MapLoader {
         }
     }
 
+
+
     public ArrayList<Cell> getMap() {
        return this.map;
+    }
+
+    @Override
+    public Iterator<Cell> iterator() {
+        return this.map.iterator();
     }
 }
  

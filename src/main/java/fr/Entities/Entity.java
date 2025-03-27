@@ -14,5 +14,13 @@ public class Entity {
         this.name = name;
     }
 
+    public int getHealth(){
+        return this.health;
+    }
+
+    public void setHealth(int h){
+        this.health = h;
+    }
+
 
 }

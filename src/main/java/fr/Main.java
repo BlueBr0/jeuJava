@@ -1,12 +1,7 @@
 package fr;
 
 
-import fr.DataBase.DbConnection;
-
 import java.io.IOException;
-
-import java.awt.EventQueue;
-import java.sql.*;
 
 
 public class Main {
@@ -26,17 +21,13 @@ public class Main {
 
 
 
-		//GUI2 gui = new GUI2();
+		GUI gui = new GUI();
 
 		//String nomCarte = "OUT";
 
-		DbConnection.DbAddScore();
-
-
-
+		//DbConnection.DbAddScore();
 
 
 	}
-
 
 }
