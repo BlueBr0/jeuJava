@@ -14,9 +14,7 @@ public class DrawMap extends JPanel {
     TextureAtlas textureAtlas;
     MapLoader map;
 
-    private String currentType = "WORLDMAP";
-
-
+    private String currentType = "NONE";
 
     //Taille par défaut
     private final int scale = 50;
@@ -73,12 +71,11 @@ public class DrawMap extends JPanel {
                 }
             }
         }
-
-        if(this.currentType.equals("WORLDMAP")){
+        else if(this.currentType.equals("WORLDMAP")){
             BufferedImage image = textureAtlas.textures.get("WORLDMAP");
             g.drawImage(image, 0, 0,720, 720, this);
-
         }
+
 
     }
 

@@ -36,7 +36,7 @@ public class GUI implements ActionListener {
     private DrawMap drawPanel; //DEFINIR LE TRUC A AFFICHER
     private JSplitPane splitPane;
 
-    private KeyListener ListenerEntree = new KeyListener();
+    private KeyListener ListenerEntree = new KeyListener(entree);
 
     //Liste des commandes valides à afficher lorque l'utilisateur utilise les flèches
     private ArrayList<String> cmdsHistory = new ArrayList<String>();
@@ -170,6 +170,9 @@ public class GUI implements ActionListener {
             this.entree.getCaret().setBlinkRate(0);
     }
 
+    //Gérer les commandes
+
+
 
     private void executerCommande() {
         String commandeLue = entree.getText();
@@ -180,6 +183,7 @@ public class GUI implements ActionListener {
             entree.setText("");
             //this.cmds.add(commandeLue);
             jeuInstance.traiterCommande(commandeLue);
+            ListenerEntree.commandes.add(commandeLue);
         }
 
         this.drawPanel.changeMap("/Data/MapTest.json", "LEVEL");

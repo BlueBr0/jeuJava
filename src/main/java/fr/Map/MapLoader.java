@@ -76,8 +76,6 @@ public class MapLoader implements Iterable<Cell>{
 
     }
 
-
-
     public ArrayList<Cell> getMap() {
        return new ArrayList<Cell>(this.map);
     }

@@ -1,12 +1,21 @@
 package fr.Utilities;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class KeyListener implements java.awt.event.KeyListener {
 
+    JTextField entree;
 
-    private ArrayList<String> commandes = new ArrayList<String>();
+    private static int historyIndex = -1;
+
+    public ArrayList<String> commandes = new ArrayList<String>();
+
+    public KeyListener(JTextField tf){
+        this.entree = tf;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {}
@@ -22,10 +31,20 @@ public class KeyListener implements java.awt.event.KeyListener {
 
         switch (e.getKeyCode()){
             case 38:
-                System.out.println("FLECHE HAUT");
+                    if (historyIndex > 0) {
+                        historyIndex--;
+                        entree.setText(commandes.get(historyIndex));
+                    }
                 break;
             case 40:
-                System.out.println("FLECHE BAS");
+                    if (historyIndex < commandes.size() - 1) {
+                        historyIndex++;
+                        entree.setText(commandes.get(historyIndex));
+                    } else {
+                        // Si on dépasse la dernière commande, on clear
+                        historyIndex = commandes.size();
+                        entree.setText("");
+                    }
                 break;
         }
     }
