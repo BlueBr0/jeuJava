@@ -17,7 +17,6 @@ public class DeleteActionWrapper extends AbstractAction {
 
         if(textField.getSelectionEnd() > 0)
             action.actionPerformed(e);
-
     }
 
 }

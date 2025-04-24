@@ -3,12 +3,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Commande {
-	NORD("N", "N (aller à la sortie nord)"), 
-	SUD("S", "S (aller à la sortie sud)"), 
-	EST("E", "E (aller à la sortie est)"), 
-	OUEST("O", "O (aller à la sortie ouest)"), 
-	AIDE("?", "? (aide)"), 
-	QUITTER("Q", "Q (quitter)");
+	NORD("D", "D : Aller a droite"),
+	SUD("G", "G : Aller a gauche"),
+	EST("H", "H : Aller en haut)"),
+	OUEST("B", "B : Aller en bas"),
+	AIDE("?", "? : Aide"),
+	QUITTER("Q", "Q : Quitter "),
+	ACHETER("BUY", "BUY : Acheter"),
+	ZONEACTUELLE("Z", "Z : Zone actuelle"),
+	PLAYERSTATS("P", "P : Afficher les statistiques du joueur");
 
 	private String abreviation;
 	private String description;
@@ -21,10 +24,10 @@ public enum Commande {
 		return name();
 	}
 	
-	public static List<String> toutesLesDescriptions() { 
-		ArrayList<String> resultat = new ArrayList<String>();
+	public static String toutesLesDescriptions() {
+		String resultat = "";
 		for(Commande c : values()) {
-			resultat.add( c.description);
+			resultat+=( c.description + "\r\n");
 		}
 		return resultat;
 	}

@@ -98,10 +98,6 @@ public class DbConnection {
             else{
                 throw new SQLException();
             }
-
-
-
-
         } catch (Exception e){
             e.printStackTrace();
             System.out.println("Erreur");

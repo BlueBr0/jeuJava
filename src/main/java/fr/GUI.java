@@ -23,6 +23,7 @@ public class GUI implements ActionListener {
     private BufferedImage logo;
     private JTextField entree;
     private JTextArea texte;
+    private Jeu jeuInstance;
 
     private final Color colorBackground = new Color(14,14,14);
     private final Color colorText = new Color(227,227,227);
@@ -32,7 +33,7 @@ public class GUI implements ActionListener {
     private JPanel textPanel;
 
     //Côté gauche : Jeu
-    private DrawMap drawPanel;
+    private DrawMap drawPanel; //DEFINIR LE TRUC A AFFICHER
     private JSplitPane splitPane;
 
     private KeyListener ListenerEntree = new KeyListener();
@@ -41,8 +42,9 @@ public class GUI implements ActionListener {
     private ArrayList<String> cmdsHistory = new ArrayList<String>();
 
 
-    public GUI() throws IOException {
+    public GUI(Jeu j) throws IOException {
         creerGUI();
+        this.jeuInstance = j;
     }
 
 
@@ -85,7 +87,7 @@ public class GUI implements ActionListener {
 
 
         // Left side: Graphics Panel
-        this.drawPanel = new DrawMap("/Data/MapTest2.json");
+        this.drawPanel = new DrawMap("/Data/MapTest2.json","WORLDMAP");
         this.drawPanel.setPreferredSize(new Dimension(600, 800));
         this.drawPanel.setBackground(this.colorBackground);
 
@@ -153,7 +155,12 @@ public class GUI implements ActionListener {
         executerCommande();
     }
 
-    private void afficher(){
+    public void afficherTexte(String s){
+        this.texte.append(s);
+        afficher();
+    }
+
+    public void afficher(){
         this.texte.append("\r\n");
     }
 
@@ -172,9 +179,10 @@ public class GUI implements ActionListener {
             this.entree.setText("");
             entree.setText("");
             //this.cmds.add(commandeLue);
+            jeuInstance.traiterCommande(commandeLue);
         }
 
-        this.drawPanel.changeMap("/Data/MapTest.json");
+        this.drawPanel.changeMap("/Data/MapTest.json", "LEVEL");
 
         //jeu.traiterCommande( commandeLue);
     }

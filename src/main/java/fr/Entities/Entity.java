@@ -2,11 +2,11 @@ package fr.Entities;
 
 public class Entity {
 
-    private int health;
+    protected int health;
 
-    private int armor;
+    protected int armor;
 
-    private String name;
+    protected String name;
 
     public Entity( String name, int health, int armor){
         this.health = health;

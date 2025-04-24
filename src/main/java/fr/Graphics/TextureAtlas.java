@@ -23,6 +23,7 @@ public class TextureAtlas {
     private final String LOOT = "LOOT";
     private final String PH = "PH";
     private final String VOID = "VOID";
+    private  final String WP = "WORLDMAP";
 
 
     public TextureAtlas() throws IOException {
@@ -36,6 +37,7 @@ public class TextureAtlas {
         names.put(LOOT, "/Sprites/LootSprite.png");
         names.put(PH, "/placeholder.png");
         names.put(VOID, "/voidPlaceHolder.png");
+        names.put(WP, "/Sprites/WorldMap.png");
 
 
 

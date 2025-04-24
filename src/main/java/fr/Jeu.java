@@ -1,20 +1,105 @@
 package fr;
 
+import fr.Entities.Player;
+
 public class Jeu {
 
-    /*
+
     private GUI gui; 
 	private Zone zoneCourante;
+
+    private Player joueur = new Player("Player", 20, 1);
     
     public Jeu() {
-        creerCarte();
+        //creerCarte();
         gui = null;
     }
 
     public void setGUI( GUI g) {
         gui = g;
         afficherMessageDeBienvenue();
+        creerCarte();
     }
+
+    private void afficherMessageDeBienvenue() {
+        gui.afficherTexte("Bienvenue !");
+        gui.afficherTexte("Tapez '?' pour obtenir de l'aide.");
+        //afficherLocalisation();
+        //gui.afficheImage(zoneCourante.nomImage());
+    }
+
+    public void traiterCommande(String commandeLue) {
+        switch (commandeLue.toUpperCase()) {
+            case "?" : case "AIDE" :
+                afficherAide();
+               // gui.afficherTexte("AIDE");
+                break;
+            case "H" : case "HAUT" :
+                gui.afficherTexte("HAUT");
+                break;
+            case "B" : case "BAS" :
+                gui.afficherTexte("BAS");
+                break;
+            case "D" : case "DROITE" :
+                gui.afficherTexte("DROITE");
+                break;
+            case "G" : case "GAUCHE" :
+                gui.afficherTexte("GAUCHE");
+                break;
+            case "Q" : case "QUITTER" :
+                terminer();
+                break;
+            case "Z" : case "ZONE":
+                afficherZoneActuelle();
+                break;
+            case "P" : case "PLAYER":
+                afficherJoueurStats();
+                break;
+            default :
+                gui.afficherTexte("Commande inconnue");
+                break;
+        }
+    }
+
+    private void terminer() {
+        gui.afficherTexte( "Au revoir...");
+        gui.enable( false);
+    }
+
+    private void afficherAide() {
+        gui.afficherTexte("Etes-vous perdu ?");
+        gui.afficherTexte("Les commandes autorisees sont :");
+        gui.afficherTexte(Commande.toutesLesDescriptions());
+
+    }
+
+    private void afficherJoueurStats(){
+        gui.afficherTexte(this.joueur.toString());
+    }
+
+    private void afficherZoneActuelle(){
+        gui.afficherTexte("Vous etes dans : " + this.zoneCourante.toString());
+    }
+
+    private void creerCarte() {
+        Zone [] zones = new Zone [7];
+        zones[0] = new Zone("SHOP", false);
+        zones[1] = new Zone("OUTSKIRTS", false);
+        zones[2] = new Zone("FOREST", true);
+        zones[3] = new Zone("NO MAN'S LAND", true);
+        zones[4] = new Zone("GHOST VILLAGE", true);
+        zones[5] = new Zone("WASTELAND", true);
+        zones[6] = new Zone("WORLDMAP", false);
+        zoneCourante = zones[6];
+    }
+
+    private void afficherCurrentZone(Zone z){
+
+    }
+
+
+
+    /*
     
     private void creerCarte() {
         Zone [] zones = new Zone [4];
@@ -36,50 +121,11 @@ public class Jeu {
             gui.afficher();
     }
 
-    private void afficherMessageDeBienvenue() {
-    	gui.afficher("Bienvenue !");
-    	gui.afficher();
-        gui.afficher("Tapez '?' pour obtenir de l'aide.");
-        gui.afficher();
-        afficherLocalisation();
-        gui.afficheImage(zoneCourante.nomImage());
-    }
-    
-    public void traiterCommande(String commandeLue) {
-    	gui.afficher( "> "+ commandeLue + "\n");
-        switch (commandeLue.toUpperCase()) {
-        case "?" : case "AIDE" : 
-            afficherAide(); 
-        	break;
-        case "N" : case "NORD" :
-        	allerEn( "NORD"); 
-        	break;
-       case "S" : case "SUD" :
-        	allerEn( "SUD"); 
-        	break;
-        case "E" : case "EST" :
-        	allerEn( "EST"); 
-        	break;
-        case "O" : case "OUEST" :
-        	allerEn( "OUEST"); 
-        	break;
-        case "Q" : case "QUITTER" :
-        	terminer();
-        	break;
-       	default : 
-            gui.afficher("Commande inconnue");
-            break;
-        }
-    }
 
-    private void afficherAide() {
-        gui.afficher("Etes-vous perdu ?");
-        gui.afficher();
-        gui.afficher("Les commandes autorisées sont :");
-        gui.afficher();
-        gui.afficher(Commande.toutesLesDescriptions().toString());
-        gui.afficher();
-    }
+    
+
+
+
 
     private void allerEn(String direction) {
     	Zone nouvelle = zoneCourante.obtientSortie( direction);

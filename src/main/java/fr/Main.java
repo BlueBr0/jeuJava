@@ -20,8 +20,9 @@ public class Main {
 		String passwd = "G84tBuYsyJ4OyHM";
 
 
-
-		GUI gui = new GUI();
+		GUI gui;
+		Jeu jeu = new Jeu();
+		jeu.setGUI(gui = new GUI(jeu));
 
 		//String nomCarte = "OUT";
 

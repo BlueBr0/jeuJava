@@ -14,20 +14,26 @@ public class DrawMap extends JPanel {
     TextureAtlas textureAtlas;
     MapLoader map;
 
+    private String currentType = "WORLDMAP";
+
+
+
     //Taille par défaut
     private final int scale = 50;
 
-    public DrawMap(String mapJsonFile) {
+    public DrawMap(String mapJsonFile, String type) {
         try {
-            map = new MapLoader(mapJsonFile, scale);
+            this.currentType = type;
+            map = new MapLoader(mapJsonFile, scale, type);
             textureAtlas = new TextureAtlas();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void changeMap(String mapJsonFile){
-        map = new MapLoader(mapJsonFile, scale);
+    public void changeMap(String mapJsonFile, String type){
+        this.currentType = type;
+        map = new MapLoader(mapJsonFile, scale, type);
         repaint();
     }
 
@@ -35,35 +41,42 @@ public class DrawMap extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for(Cell c : map){
-            //System.out.println(c.toString());
-            BufferedImage image;
-            switch (c.getType()){
-                case "WALLBOTTOM":
-                    image = textureAtlas.textures.get("WALLBOTTOM");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
-                    break;
-                case "WALLCORNER":
-                    image = textureAtlas.textures.get("WALLCORNER");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
-                    break;
-                case "ENEMY":
-                    image = textureAtlas.textures.get("ENEMY");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
-                    break;
-                case "PLAYER":
-                    image = textureAtlas.textures.get("PLAYER");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
-                    break;
-                case "LOOT":
-                    image = textureAtlas.textures.get("LOOT");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
-                    break;
-                default:
-                    image = textureAtlas.textures.get("VOID");
-                    g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
-                    break;
+        if(this.currentType.equals("LEVEL")){
+            for(Cell c : map){
+                //System.out.println(c.toString());
+                BufferedImage image;
+                switch (c.getType()){
+                    case "WALLBOTTOM":
+                        image = textureAtlas.textures.get("WALLBOTTOM");
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        break;
+                    case "WALLCORNER":
+                        image = textureAtlas.textures.get("WALLCORNER");
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        break;
+                    case "ENEMY":
+                        image = textureAtlas.textures.get("ENEMY");
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        break;
+                    case "PLAYER":
+                        image = textureAtlas.textures.get("PLAYER");
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        break;
+                    case "LOOT":
+                        image = textureAtlas.textures.get("LOOT");
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        break;
+                    default:
+                        image = textureAtlas.textures.get("VOID");
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        break;
+                }
             }
+        }
+
+        if(this.currentType.equals("WORLDMAP")){
+            BufferedImage image = textureAtlas.textures.get("WORLDMAP");
+            g.drawImage(image, 0, 0,720, 720, this);
 
         }
 
