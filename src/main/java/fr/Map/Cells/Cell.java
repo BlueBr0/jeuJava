@@ -2,7 +2,6 @@ package fr.Map.Cells;
 
 public abstract class Cell {
 
-
     private int x;
 
     private int y;

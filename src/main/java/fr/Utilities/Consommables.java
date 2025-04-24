@@ -14,17 +14,17 @@ public class Consommables {
     }
 
     private void chargerConsommables() {
-        lesConsommables.add(new Consommable("Petite trousse de soin", Rarete.COMMUN, "trousse"));
-        lesConsommables.add(new Consommable("Boîte de conserve", Rarete.COMMUN, "conserve"));
-        lesConsommables.add(new Consommable("Bouteille d'eau", Rarete.COMMUN, "eau"));
+        lesConsommables.add(new Consommable("Petite trousse de soin", Rarete.COMMUN, "TS"));
+        lesConsommables.add(new Consommable("Boîte de conserve", Rarete.COMMUN, "BC"));
+        lesConsommables.add(new Consommable("Bouteille d'eau", Rarete.COMMUN, "BE"));
 
-        lesConsommables.add(new Consommable("Kit médical", Rarete.UNCOMMUN, "kit"));
-        lesConsommables.add(new Consommable("Boisson énergisante", Rarete.UNCOMMUN, "boisson"));
-        lesConsommables.add(new Consommable("Antibiotiques", Rarete.UNCOMMUN, "antibio"));
+        lesConsommables.add(new Consommable("Kit médical", Rarete.UNCOMMUN, "KIT"));
+        lesConsommables.add(new Consommable("Boisson énergisante", Rarete.UNCOMMUN, "BEN"));
+        lesConsommables.add(new Consommable("Antibiotiques", Rarete.UNCOMMUN, "AN"));
 
-        lesConsommables.add(new Consommable("Sérum de survie", Rarete.RARE, "serum"));
-        lesConsommables.add(new Consommable("Injection d'adrénaline", Rarete.RARE, "adré"));
-        lesConsommables.add(new Consommable("Ration militaire", Rarete.RARE, "ration"));
+        lesConsommables.add(new Consommable("Balles", Rarete.RARE, "AMO"));
+        lesConsommables.add(new Consommable("Injection d'adrénaline", Rarete.RARE, "AD"));
+        lesConsommables.add(new Consommable("Ration militaire", Rarete.RARE, "RA"));
     }
 
     public static Consommable getRandomConsommable() {

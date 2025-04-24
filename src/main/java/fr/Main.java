@@ -1,17 +1,18 @@
 package fr;
 
 
+import fr.DataBase.DbConnection;
+
 import java.io.IOException;
+
+import java.awt.EventQueue;
+import java.sql.*;
 
 
 public class Main {
 
-
-
 	public static void main(String[] args) throws IOException {
-		/*Jeu jeu = new Jeu();
-		GUI gui = new GUI( jeu);
-		jeu.setGUI( gui);*/
+
 
 
 		String BDD = "scoreszombie_bdd";
@@ -19,16 +20,16 @@ public class Main {
 		String user = "400801";
 		String passwd = "G84tBuYsyJ4OyHM";
 
-
-		GUI gui;
 		Jeu jeu = new Jeu();
-		jeu.setGUI(gui = new GUI(jeu));
+		GUI gui = new GUI( jeu);
+		jeu.setGUI( gui);
 
-		//String nomCarte = "OUT";
 
 		//DbConnection.DbAddScore();
 
 
+
 	}
+
 
 }

@@ -27,7 +27,7 @@ public enum Commande {
 	public static String toutesLesDescriptions() {
 		String resultat = "";
 		for(Commande c : values()) {
-			resultat+=( c.description + "\r\n");
+			resultat += ( c.description + "\r\n");
 		}
 		return resultat;
 	}

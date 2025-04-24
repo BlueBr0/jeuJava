@@ -4,11 +4,10 @@ import fr.Entities.Player;
 
 public class Jeu {
 
-
+    public Zone[] zones;
     private GUI gui; 
 	private Zone zoneCourante;
-
-    private Player joueur = new Player("Player", 20, 1);
+    private final Player joueur = new Player("Player", 20, 1);
     
     public Jeu() {
         //creerCarte();
@@ -82,15 +81,15 @@ public class Jeu {
     }
 
     private void creerCarte() {
-        Zone [] zones = new Zone [7];
-        zones[0] = new Zone("SHOP", false);
-        zones[1] = new Zone("OUTSKIRTS", false);
-        zones[2] = new Zone("FOREST", true);
-        zones[3] = new Zone("NO MAN'S LAND", true);
-        zones[4] = new Zone("GHOST VILLAGE", true);
-        zones[5] = new Zone("WASTELAND", true);
-        zones[6] = new Zone("WORLDMAP", false);
-        zoneCourante = zones[6];
+        this.zones = new Zone [7];
+        this.zones[0] = new Zone("SHOP", false);
+        this.zones[1] = new Zone("OUTSKIRTS", false);
+        this.zones[2] = new Zone("FOREST", true);
+        this.zones[3] = new Zone("NO MAN'S LAND", true);
+        this.zones[4] = new Zone("GHOST VILLAGE", true);
+        this.zones[5] = new Zone("WASTELAND", true);
+        this.zones[6] = new Zone("WORLDMAP", false);
+        this.zoneCourante = zones[6];
     }
 
     private void afficherCurrentZone(Zone z){

@@ -11,8 +11,9 @@ import java.io.IOException;
 
 public class DrawMap extends JPanel {
 
-    TextureAtlas textureAtlas;
-    MapLoader map;
+    private TextureAtlas textureAtlas;
+
+    public MapLoader map;
 
     private String currentType = "NONE";
 

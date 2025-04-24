@@ -7,15 +7,16 @@ import java.util.ArrayList;
 
 public class KeyListener implements java.awt.event.KeyListener {
 
+    public void setEntree(JTextField entree) {
+        this.entree = entree;
+    }
+
     JTextField entree;
 
     private static int historyIndex = -1;
 
     public ArrayList<String> commandes = new ArrayList<String>();
 
-    public KeyListener(JTextField tf){
-        this.entree = tf;
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {}

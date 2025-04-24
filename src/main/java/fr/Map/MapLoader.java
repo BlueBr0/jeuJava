@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class MapLoader implements Iterable<Cell>{
 
-    private final ArrayList<Cell> map;
+    private  ArrayList<Cell> map;
 
     private int scale;
 
@@ -79,6 +79,7 @@ public class MapLoader implements Iterable<Cell>{
     public ArrayList<Cell> getMap() {
        return new ArrayList<Cell>(this.map);
     }
+
 
     @Override
     public Iterator<Cell> iterator() {
