@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class DrawMap extends JPanel {
 
@@ -30,9 +32,15 @@ public class DrawMap extends JPanel {
         }
     }
 
-    public void changeMap(String mapJsonFile, String type){
+
+    public void changeMapJSON(String mapJsonFile, String type){
         this.currentType = type;
         map = new MapLoader(mapJsonFile, scale, type);
+        repaint();
+    }
+
+    public void changeMapArray(ArrayList<Cell> list){
+        this.map.setMap(list);
         repaint();
     }
 
@@ -40,8 +48,11 @@ public class DrawMap extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        //System.out.println("TEST PAINT");
+
         if(this.currentType.equals("LEVEL")){
-            for(Cell c : map){
+            //System.out.println("TEST PAINT2");
+            for(Cell c : map.getMap()){
                 //System.out.println(c.toString());
                 BufferedImage image;
                 switch (c.getType()){

@@ -4,13 +4,10 @@ public class Entity {
 
     protected int health;
 
-    protected int armor;
-
     protected String name;
 
-    public Entity( String name, int health, int armor){
+    public Entity( String name, int health){
         this.health = health;
-        this.armor = armor;
         this.name = name;
     }
 

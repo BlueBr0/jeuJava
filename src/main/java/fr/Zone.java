@@ -3,9 +3,11 @@ import java.util.HashMap;
 
 public class Zone 
 {
-    private String description;
+    public String description;
 
     private boolean isLoocked;
+
+    public Zone unlocks;
 
     public Zone(String description, boolean b) {
         this.description = description;
@@ -14,6 +16,14 @@ public class Zone
 
     public String toString() {
         return description;
+    }
+
+    public boolean isLoocked(){
+        return this.isLoocked;
+    }
+
+    public void setUnlocks(Zone u ){
+        this.unlocks = u;
     }
 
 //    public void ajouteSortie(Sortie sortie, Zone zoneVoisine) {

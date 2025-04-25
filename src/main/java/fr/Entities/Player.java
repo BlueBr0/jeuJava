@@ -6,14 +6,14 @@ public class Player extends Entity{
 
     private int amo;
 
-    public Player(String name, int health, int armor) {
-        super(name, health, armor);
+    public Player(String name, int health) {
+        super(name, health);
         this.amo = BASE_AMO;
     }
 
     @Override
     public String toString(){
-        return name + "\r\nPV : " + health + "\r\nARMOR :" + armor + "\r\nMUNITIONS : " + amo;
+        return name + "\r\nPV : " + health + "\r\nMUNITIONS : " + amo;
     }
 
 }

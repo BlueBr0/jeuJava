@@ -1,6 +1,7 @@
 package fr;
 
 import fr.Graphics.DrawMap;
+import fr.Map.Cells.Cell;
 import fr.Utilities.DeleteActionWrapper;
 import fr.Utilities.KeyListener;
 import fr.Utilities.Loader;
@@ -87,7 +88,7 @@ public class GUI implements ActionListener {
 
 
         // Left side: Graphics Panel
-        this.drawPanel = new DrawMap("/Data/MapTest2.json","WORLDMAP");
+        this.drawPanel = new DrawMap("/Data/MapTest2.json","NONE");
         this.drawPanel.setPreferredSize(new Dimension(600, 800));
         this.drawPanel.setBackground(this.colorBackground);
 
@@ -175,6 +176,17 @@ public class GUI implements ActionListener {
     //Gérer les commandes
 
 
+    public void afficherCarte(){
+        this.drawPanel.changeMapJSON("","WORLDMAP");
+    }
+
+    public void afficherShop(){
+        this.drawPanel.changeMapJSON("","SHOP");
+    }
+
+    public void afficherNiveau(){
+        this.drawPanel.changeMapJSON("/Data/MapsTest.json","LEVEL");
+    }
 
     private void executerCommande() {
         String commandeLue = entree.getText();
@@ -192,8 +204,17 @@ public class GUI implements ActionListener {
 
         }
 
-        this.drawPanel.changeMap("/Data/MapTest.json", "LEVEL");
+        //this.drawPanel.changeMap("/Data/MapsTest.json", "LEVEL");
 
         //jeu.traiterCommande( commandeLue);
+    }
+
+
+    public void redessinerLevel(ArrayList<Cell> list){
+        this.drawPanel.changeMapArray(list);
+    }
+
+    public ArrayList<Cell> getNiveau(){
+        return new ArrayList<>(this.drawPanel.map.getMap());
     }
 }

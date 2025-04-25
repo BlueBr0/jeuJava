@@ -6,8 +6,8 @@ public class CellLoot extends Cell{
 
     private Loot loot;
 
-    public CellLoot(int x, int y) {
-        super(x, y);
+    public CellLoot(int x, int y, int xg, int yg) {
+        super(x, y, xg, yg);
         this.loot = new Loot();
     }
 

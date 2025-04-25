@@ -32,20 +32,21 @@ public class KeyListener implements java.awt.event.KeyListener {
 
         switch (e.getKeyCode()){
             case 38:
-                    if (historyIndex > 0) {
-                        historyIndex--;
-                        entree.setText(commandes.get(historyIndex));
-                    }
+                if (historyIndex < commandes.size() - 1) {
+                    historyIndex++;
+                    entree.setText(commandes.get(historyIndex));
+                } else {
+                    // Si on dépasse la dernière commande, on clear
+                    historyIndex = commandes.size();
+                    entree.setText("");
+                }
                 break;
             case 40:
-                    if (historyIndex < commandes.size() - 1) {
-                        historyIndex++;
-                        entree.setText(commandes.get(historyIndex));
-                    } else {
-                        // Si on dépasse la dernière commande, on clear
-                        historyIndex = commandes.size();
-                        entree.setText("");
-                    }
+
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    entree.setText(commandes.get(historyIndex));
+                }
                 break;
         }
     }
