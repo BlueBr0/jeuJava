@@ -7,7 +7,8 @@ package fr.Map.Cells;
 public class CellWallBottom extends CellWall{
 
     /**
-     * Construit une nouvelle cellule de type mur inférieur avec des coordonnées spécifiées dans la grille et dans le jeu.
+     * Construit une nouvelle cellule de type mur inférieur avec des coordonnées spécifiées dans la grille et dans
+     * le jeu.
      *
      * @param x La coordonnée x de la cellule dans la grille.
      * @param y La coordonnée y de la cellule dans la grille.

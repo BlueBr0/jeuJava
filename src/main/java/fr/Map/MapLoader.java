@@ -17,7 +17,8 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
- * Classe responsable du chargement et de la gestion des cartes de jeu à partir de fichiers JSON ou de listes de cellules.
+ * Classe responsable du chargement et de la gestion des cartes de jeu à partir de fichiers JSON ou de listes
+ * de cellules.
  * Elle permet de créer une carte composée de différentes cellules et de la parcourir.
  */
 public class MapLoader implements Iterable<Cell>{

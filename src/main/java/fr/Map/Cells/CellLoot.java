@@ -11,7 +11,8 @@ public class CellLoot extends Cell{
     private Loot loot;
 
     /**
-     * Construit une nouvelle cellule contenant un objet de butin avec des coordonnées spécifiées dans la grille et dans le jeu.
+     * Construit une nouvelle cellule contenant un objet de butin avec des coordonnées spécifiées dans la grille et
+     * dans le jeu.
      * Initialise également un objet de butin.
      *
      * @param x La coordonnée x de la cellule dans la grille.

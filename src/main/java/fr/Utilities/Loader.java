@@ -6,7 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Classe utilitaire pour charger diverses ressources telles que des fichiers JSON, des sprites et des polices de caractères.
+ * Classe utilitaire pour charger diverses ressources telles que des fichiers JSON, des sprites et des polices de
+ * caractères.
  */
 public class Loader {
 
