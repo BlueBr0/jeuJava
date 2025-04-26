@@ -2,7 +2,13 @@ package fr.Map;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import fr.Map.Cells.*;
+import fr.Map.Cells.Cell;
+import fr.Map.Cells.CellPlayer;
+import fr.Map.Cells.CellWallBottom;
+import fr.Map.Cells.CellEnemy;
+import fr.Map.Cells.CellWallCorner;
+import fr.Map.Cells.CellVoid;
+import fr.Map.Cells.CellLoot;
 import java.util.ArrayList;
 import com.google.gson.Gson;
 import java.io.InputStream;
@@ -38,7 +44,7 @@ public class MapLoader implements Iterable<Cell>{
             //Remplacer avec une Exception Custom
         }
 
-        if(type.equals("LEVEL")) {
+        if (type.equals("LEVEL")) {
             try {
                 InputStreamReader reader = new InputStreamReader(inputStream);
                 Gson gson = new Gson();

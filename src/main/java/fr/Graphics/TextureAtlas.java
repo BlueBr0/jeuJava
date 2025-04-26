@@ -13,31 +13,31 @@ public class TextureAtlas {
 
     private HashMap<String, String> names = new HashMap<>();
 
-    private final String WALLC = "WALLCORNER";
+    private final String wallC = "WALLCORNER";
 
-    private final String WALLB = "WALLBOTTOM";
-    private final String START = "START";
-    private final String END = "END";
-    private final String ENEMY = "ENEMY";
-    private final String PLAYER = "PLAYER";
-    private final String LOOT = "LOOT";
-    private final String PH = "PH";
-    private final String VOID = "VOID";
-    private  final String WP = "WORLDMAP";
+    private final String wallB = "WALLBOTTOM";
+    private final String start = "START";
+    private final String end = "END";
+    private final String enemy = "ENEMY";
+    private final String player = "PLAYER";
+    private final String loot = "LOOT";
+    private final String ph = "PH";
+    private final String voidPlaceHolder = "VOID";
+    private  final String wp = "WORLDMAP";
 
 
     public TextureAtlas() throws IOException {
 
-        names.put(WALLC, "/Sprites/SpriteWallCorner.png");
-        names.put(WALLB, "/Sprites/SpriteWallBottom.png");
-        names.put(START, "/STARTPlaceHolder.png");
-        names.put(END, "/ENDPlaceholder.png");
-        names.put(ENEMY, "/Sprites/ZombieSprite.png");
-        names.put(PLAYER, "/Sprites/PlayerSprite.png");
-        names.put(LOOT, "/Sprites/LootSprite.png");
-        names.put(PH, "/placeholder.png");
-        names.put(VOID, "/voidPlaceHolder.png");
-        names.put(WP, "/Sprites/WorldMap.png");
+        names.put(wallC, "/Sprites/SpriteWallCorner.png");
+        names.put(wallB, "/Sprites/SpriteWallBottom.png");
+        names.put(start, "/STARTPlaceHolder.png");
+        names.put(end, "/ENDPlaceholder.png");
+        names.put(enemy, "/Sprites/ZombieSprite.png");
+        names.put(player, "/Sprites/PlayerSprite.png");
+        names.put(loot, "/Sprites/LootSprite.png");
+        names.put(ph, "/placeholder.png");
+        names.put(voidPlaceHolder, "/voidPlaceHolder.png");
+        names.put(wp, "/Sprites/WorldMap.png");
 
 
 

@@ -1,7 +1,6 @@
 package fr.Utilities;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Loot {
 

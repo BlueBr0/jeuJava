@@ -6,10 +6,20 @@ import fr.Utilities.DeleteActionWrapper;
 import fr.Utilities.KeyListener;
 import fr.Utilities.Loader;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultEditorKit;
-import java.awt.*;
+import javax.swing.Action;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -17,6 +27,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+
 
 public class GUI implements ActionListener {
 
@@ -26,8 +37,8 @@ public class GUI implements ActionListener {
     private JTextArea texte;
     private Jeu jeuInstance;
 
-    private final Color colorBackground = new Color(14,14,14);
-    private final Color colorText = new Color(227,227,227);
+    private final Color colorBackground = new Color(14, 14, 14);
+    private final Color colorText = new Color(227, 227, 227);
 
     //Panels d'affichage du GUI
     //Côté droit : Entree + Texte
@@ -37,7 +48,7 @@ public class GUI implements ActionListener {
     private DrawMap drawPanel; //DEFINIR LE TRUC A AFFICHER
     private JSplitPane splitPane;
 
-    private KeyListener ListenerEntree = new KeyListener();
+    private KeyListener listenerEntree = new KeyListener();
 
     //Liste des commandes valides à afficher lorque l'utilisateur utilise les flèches
     private ArrayList<String> cmdsHistory = new ArrayList<String>();
@@ -69,7 +80,7 @@ public class GUI implements ActionListener {
 
 
         //Load Pixel Font
-        Font customFont = Loader.LoadFont("src/main/resources/FourPixelsFont.ttf", 16);
+        Font customFont = Loader.loadFont("src/main/resources/FourPixelsFont.ttf", 16);
         if (customFont == null) {
             customFont = new Font("Arial", Font.BOLD, 16);
         }
@@ -88,7 +99,7 @@ public class GUI implements ActionListener {
 
 
         // Left side: Graphics Panel
-        this.drawPanel = new DrawMap("/Data/MapTest2.json","NONE");
+        this.drawPanel = new DrawMap("/Data/MapTest2.json", "NONE");
         this.drawPanel.setPreferredSize(new Dimension(600, 800));
         this.drawPanel.setBackground(this.colorBackground);
 
@@ -119,7 +130,8 @@ public class GUI implements ActionListener {
 
         //Enlève le bruit quand on supprime trop du texte
         Action deleteAction = this.entree.getActionMap().get(DefaultEditorKit.deletePrevCharAction);
-        this.entree.getActionMap().put( DefaultEditorKit.deletePrevCharAction, new DeleteActionWrapper(this.entree, deleteAction) );
+        this.entree.getActionMap().put( DefaultEditorKit.deletePrevCharAction, new DeleteActionWrapper(this.entree,
+                deleteAction) );
 
 
         JScrollPane listScroller = new JScrollPane(this.texte);
@@ -133,7 +145,7 @@ public class GUI implements ActionListener {
 
         this.entree.addActionListener(this);
 
-        this.entree.addKeyListener(this.ListenerEntree);
+        this.entree.addKeyListener(this.listenerEntree);
 
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, this.drawPanel, this.textPanel);
 
@@ -146,7 +158,7 @@ public class GUI implements ActionListener {
         this.frame.setVisible(true);
         this.entree.requestFocus();
 
-        this.ListenerEntree.setEntree(this.entree);
+        this.listenerEntree.setEntree(this.entree);
 
 
         //texte.append("Player :\r\nPV : 20\r\nBULLETS: 10\r\n");
@@ -177,20 +189,20 @@ public class GUI implements ActionListener {
 
 
     public void afficherCarte(){
-        this.drawPanel.changeMapJSON("","WORLDMAP");
+        this.drawPanel.changeMapJSON("", "WORLDMAP");
     }
 
     public void afficherShop(){
-        this.drawPanel.changeMapJSON("","SHOP");
+        this.drawPanel.changeMapJSON("", "SHOP");
     }
 
     public void afficherNiveau(){
-        this.drawPanel.changeMapJSON("/Data/MapsTest.json","LEVEL");
+        this.drawPanel.changeMapJSON("/Data/MapsTest.json", "LEVEL");
     }
 
     private void executerCommande() {
         String commandeLue = entree.getText();
-        if(!Objects.equals(commandeLue, "")){
+        if (!Objects.equals(commandeLue, "")){
             this.texte.append("> " + commandeLue);
             afficher();
             this.entree.setText("");
@@ -199,7 +211,7 @@ public class GUI implements ActionListener {
             jeuInstance.traiterCommande(commandeLue);
 
 
-            ListenerEntree.commandes.add(commandeLue);
+            listenerEntree.commandes.add(commandeLue);
 
 
         }

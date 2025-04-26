@@ -1,12 +1,9 @@
 package fr;
 
 
-import fr.DataBase.DbConnection;
 
 import java.io.IOException;
 
-import java.awt.EventQueue;
-import java.sql.*;
 
 
 public class Main {
@@ -15,7 +12,7 @@ public class Main {
 
 
 
-		String BDD = "scoreszombie_bdd";
+		String bdd = "scoreszombie_bdd";
 		String url = "jdbc:mysql://mysql-scoreszombie.alwaysdata.net:3306/scoreszombie_bdd";
 		String user = "400801";
 		String passwd = "G84tBuYsyJ4OyHM";

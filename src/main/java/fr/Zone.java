@@ -1,13 +1,11 @@
 package fr;
-import java.util.HashMap;
 
-public class Zone 
-{
+public class Zone {
+
     public String description;
+    public Zone unlocks;
 
     private boolean isLoocked;
-
-    public Zone unlocks;
 
     public Zone(String description, boolean b) {
         this.description = description;

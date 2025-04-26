@@ -1,21 +1,26 @@
 package fr.Utilities;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JTextField;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+
 public class KeyListener implements java.awt.event.KeyListener {
+
+    private static int historyIndex = -1;
+    
+    public ArrayList<String> commandes = new ArrayList<String>();
+
+    JTextField entree;
+
+
+
 
     public void setEntree(JTextField entree) {
         this.entree = entree;
     }
 
-    JTextField entree;
 
-    private static int historyIndex = -1;
-
-    public ArrayList<String> commandes = new ArrayList<String>();
 
 
     @Override

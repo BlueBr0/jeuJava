@@ -1,13 +1,18 @@
 package fr.DataBase;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DbConnection {
 
     public static final String BDD = "scoreszombie_bdd";
-    public static final String url = "jdbc:mysql://mysql-scoreszombie.alwaysdata.net:3306/" + BDD;
-    public static final String user = "400801";
-    public static final String passwd = "G84tBuYsyJ4OyHM";
+    public static final String URL = "jdbc:mysql://mysql-scoreszombie.alwaysdata.net:3306/" + BDD;
+    public static final String USER = "400801";
+    public static final String PASSWD = "G84tBuYsyJ4OyHM";
 
     //INSERT INTO score (nomjoueur, temps, idniveau, coderang, points) VALUES
     //('GREG', '18:00:00', 'OUT1', 'A', 210),
@@ -17,7 +22,7 @@ public class DbConnection {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");  // Updated driver
-            conn = DriverManager.getConnection(url, user, passwd);
+            conn = DriverManager.getConnection(URL, USER, PASSWD);
             System.out.println("Connected to MySQL!");
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,7 +33,7 @@ public class DbConnection {
         return conn;
     }
 
-    public static void DbAddScore() {
+    public static void dbAddScore() {
         try {
 
             Connection conn = getConnection();
@@ -59,12 +64,12 @@ public class DbConnection {
     }
 
 
-    public static void DbGetPlayers(String idMap){
+    public static void dbGetPlayers(String idMap){
         try {
 
             Connection conn = getConnection();
 
-            if(conn != null){
+            if (conn != null){
                 Statement stmt = conn.createStatement();
 
                 String sql = "SELECT nomJoueur, points, s.coderang, libelleniveau, " +
@@ -95,7 +100,7 @@ public class DbConnection {
                 stmt.close();
                 conn.close();
             }
-            else{
+            else {
                 throw new SQLException();
             }
         } catch (Exception e){

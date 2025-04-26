@@ -1,6 +1,8 @@
 package fr.Utilities;
 
-import javax.swing.*;
+import javax.swing.AbstractAction;
+import javax.swing.JTextField;
+import javax.swing.Action;
 import java.awt.event.ActionEvent;
 
 public class DeleteActionWrapper extends AbstractAction {
@@ -12,10 +14,11 @@ public class DeleteActionWrapper extends AbstractAction {
         this.action = action;
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e){
 
-        if(textField.getSelectionEnd() > 0)
+        if (textField.getSelectionEnd() > 0)
             action.actionPerformed(e);
     }
 

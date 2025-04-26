@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <!-- Limite de longueur de ligne : 120 caractères maximum -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!-- Fait apparaître les erreurs comme des warnings -->
+        <property name="severity" value="warning"/>
+
+        <!-- Impose une seule class par fichier -->
+        <module name="OneTopLevelClass"/>
+
+        <!-- Vérifie que les membres de la classe sont dans le bon ordre (variables, constructeur, méthodes) -->
+        <module name="DeclarationOrder"/>
+
+        <!-- Les classes: PascalCase -->
+        <module name="TypeName">
+            <property name="format" value="^[A-Z][a-zA-Z0-9]*$"/>
+        </module>
+
+        <!-- Les variables et méthodes : camelCase -->
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
+        </module>
+
+        <!-- Les constantes : MAJUSCULES_SÉPARÉES_PAR_UN_TIRET_BAS -->
+        <module name="ConstantName">
+            <property name="format" value="^[A-Z][A-Z0-9_]*$"/>
+        </module>
+
+        <!-- Indentation basique de Java (qui respecte déjà notre règle de programmation) -->
+        <!-- <module name="Indentation"/> -->
+
+        <!-- Les accolades ouvrantes { sont sur la même ligne que les déclarations -->
+        <module name="LeftCurly"/>
+
+        <!-- Une ligne vide entre les méthodes -->
+        <module name="EmptyLineSeparator">
+            <property name="tokens" value="CTOR_DEF, METHOD_DEF"/> <!-- Seulement les constructeurs et méthodes -->
+        </module>
+
+        <!-- Vérifier la présence de Javadoc pour chaque méthode -->
+        <module name="JavadocMethod"/>
+
+        <!-- Empêcher les imports inutilisés -->
+        <module name="UnusedImports"/>
+
+        <!-- Empêche les imports wildcard (import java.util.*) -->
+        <module name="AvoidStarImport"/>
+
+        <!-- Les blocs try ne peuvent pas être vides -->
+        <module name="EmptyBlock">
+            <property name="tokens" value="LITERAL_TRY"/>
+        </module>
+
+        <!-- Les blocs catch ne peuvent pas être vide -->
+        <module name="EmptyCatchBlock"/>
+
+        <!-- Vérifie les variables locales finales non utilisées -->
+        <module name="LocalFinalVariableName"/>
+
+        <!-- Empêche les espaces inutiles -->
+        <module name="WhitespaceAfter"/>
+    </module>
+</module>

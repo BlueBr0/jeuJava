@@ -13,12 +13,13 @@ public enum Commande {
 	ZONEACTUELLE("Z", "Z : Zone actuelle"),
 	PLAYERSTATS("P", "P : Afficher les statistiques du joueur");
 
-	private String abreviation;
-	private String description;
-	private Commande(String c, String d ) { 
+    private String abreviation;
+    private String description;
+    private Commande(String c, String d ) {
 		abreviation = c;
-		description = d; 
+	    description = d;
 	}
+
 	@Override
 	public String toString() { 
 		return name();
@@ -26,7 +27,7 @@ public enum Commande {
 	
 	public static String toutesLesDescriptions() {
 		String resultat = "";
-		for(Commande c : values()) {
+		for (Commande c : values()) {
 			resultat += ( c.description + "\r\n");
 		}
 		return resultat;
@@ -34,7 +35,7 @@ public enum Commande {
 	
 	public static List<String> toutesLesAbreviations() { 
 		ArrayList<String> resultat = new ArrayList<String>();
-		for(Commande c : values()) {
+		for (Commande c : values()) {
 			resultat.add( c.abreviation);
 		}
 		return resultat;
@@ -42,7 +43,7 @@ public enum Commande {
 	
 	public static List<String> tousLesNoms() { 
 		ArrayList<String> resultat = new ArrayList<String>();
-		for(Commande c : values()) {
+		for (Commande c : values()) {
 			resultat.add( c.name());
 		}
 		return resultat;

@@ -3,20 +3,17 @@ package fr.Graphics;
 import fr.Map.Cells.Cell;
 import fr.Map.MapLoader;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DrawMap extends JPanel {
 
-    private TextureAtlas textureAtlas;
-
     public MapLoader map;
 
+    private TextureAtlas textureAtlas;
     private String currentType = "NONE";
 
     //Taille par défaut
@@ -50,42 +47,42 @@ public class DrawMap extends JPanel {
 
         //System.out.println("TEST PAINT");
 
-        if(this.currentType.equals("LEVEL")){
+        if (this.currentType.equals("LEVEL")){
             //System.out.println("TEST PAINT2");
-            for(Cell c : map.getMap()){
+            for (Cell c : map.getMap()){
                 //System.out.println(c.toString());
                 BufferedImage image;
                 switch (c.getType()){
                     case "WALLBOTTOM":
                         image = textureAtlas.textures.get("WALLBOTTOM");
-                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(), scale, scale, this);
                         break;
                     case "WALLCORNER":
                         image = textureAtlas.textures.get("WALLCORNER");
-                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(), scale, scale, this);
                         break;
                     case "ENEMY":
                         image = textureAtlas.textures.get("ENEMY");
-                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(), scale, scale, this);
                         break;
                     case "PLAYER":
                         image = textureAtlas.textures.get("PLAYER");
-                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(), scale, scale, this);
                         break;
                     case "LOOT":
                         image = textureAtlas.textures.get("LOOT");
-                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(), scale, scale, this);
                         break;
                     default:
                         image = textureAtlas.textures.get("VOID");
-                        g.drawImage(image, c.getXPosition(), c.getYPosition(),scale, scale, this);
+                        g.drawImage(image, c.getXPosition(), c.getYPosition(), scale, scale, this);
                         break;
                 }
             }
         }
-        else if(this.currentType.equals("WORLDMAP")){
+        else if (this.currentType.equals("WORLDMAP")){
             BufferedImage image = textureAtlas.textures.get("WORLDMAP");
-            g.drawImage(image, 0, 0,720, 720, this);
+            g.drawImage(image, 0, 0, 720, 720, this);
         }
 
 

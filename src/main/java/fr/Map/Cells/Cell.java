@@ -13,10 +13,10 @@ public abstract class Cell {
     private int yGame;
 
     public Cell(int x, int y, int xg, int yg){
-       this.x = x;
-       this.y = y;
-       this.xGame = xg;
-       this.yGame = yg;
+        this.x = x;
+        this.y = y;
+        this.xGame = xg;
+        this.yGame = yg;
     }
 
     public int getXPosition() {

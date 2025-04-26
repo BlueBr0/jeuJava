@@ -2,7 +2,6 @@ package fr;
 
 import fr.Entities.Player;
 import fr.Map.Cells.Cell;
-import fr.Map.Cells.CellPlayer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -103,7 +102,7 @@ public class Jeu {
     private Cell getPlayerCell(){
         Cell cell = null;
         for (Cell c : currentLevelCells){
-            if(c.getType().equals("PLAYER")){
+            if (c.getType().equals("PLAYER")){
                 cell = c;
                 break;
             }
@@ -114,7 +113,7 @@ public class Jeu {
     private Cell getNextCell(int x, int y){
         Cell cell = null;
         for (Cell c : currentLevelCells){
-            if(x == c.getXGamePosition() && y == c.getYGamePosition()){
+            if (x == c.getXGamePosition() && y == c.getYGamePosition()){
                 cell = c;
                 break;
             }
@@ -137,13 +136,15 @@ public class Jeu {
         int tmpXG = cell1.getXGamePosition();
         int tmpYG = cell1.getYGamePosition();
 
-        cell1.setPosition(cell2.getXPosition(), cell2.getYPosition(), cell2.getXGamePosition(), cell2.getYGamePosition());
+        cell1.setPosition(cell2.getXPosition(), cell2.getYPosition(), cell2.getXGamePosition(),
+                cell2.getYGamePosition());
+
         cell2.setPosition(tmpX, tmpY, tmpXG, tmpYG);
     }
 
     private int getCellIndex(Cell rc){
-        for(int i = 0; i<this.currentLevelCells.size();i++){
-            if(this.currentLevelCells.get(i).equals(rc)){
+        for (int i = 0; i<this.currentLevelCells.size(); i++){
+            if (this.currentLevelCells.get(i).equals(rc)){
                 return i;
             }
         }
@@ -184,7 +185,7 @@ public class Jeu {
     }
 
     private void faireCommande(String comm){
-        if(this.inLevel){
+        if (this.inLevel){
             Cell playerCell = getPlayerCell();
             System.out.println(playerCell.getXGamePosition() + " : " + playerCell.getYGamePosition());
 
@@ -220,18 +221,18 @@ public class Jeu {
             System.out.println(xNext + " : " + yNext);
 
         }
-        else{
+        else {
             gui.afficherTexte("Vous ne pouvez pas faire ca ici !");
         }
 
     }
 
     private void allerDansZone(Zone z){
-        if(this.inWorldMap){
+        if (this.inWorldMap){
             if (z.isLoocked()){
                 gui.afficherTexte("Vous n'avez pas encore debloque cette zone !");
             }
-            else{
+            else {
                 gui.afficherTexte("Vous entrez dans " + z.description);
                 gui.afficherNiveau();
                 this.currentLevelCells = gui.getNiveau();
@@ -243,7 +244,7 @@ public class Jeu {
                 this.inCombat = false;
             }
         }
-        else{
+        else {
             gui.afficherTexte("VOus ne pouvez pas faire ca ici !");
         }
 
@@ -255,7 +256,7 @@ public class Jeu {
     }
 
     private void commencer(){
-        if(this.inMenu){
+        if (this.inMenu){
             gui.afficherCarte();
             gui.afficherTexte("Choississez une carte pour debuter un niveau !");
 
@@ -265,7 +266,7 @@ public class Jeu {
             this.inMenu = false;
             this.inCombat = false;
         }
-        else{
+        else {
             gui.afficherTexte("VOus ne pouvez pas faire ca ici !");
         }
 
