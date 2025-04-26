@@ -16,24 +16,48 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * Classe responsable du chargement et de la gestion des cartes de jeu à partir de fichiers JSON ou de listes de cellules.
+ * Elle permet de créer une carte composée de différentes cellules et de la parcourir.
+ */
 public class MapLoader implements Iterable<Cell>{
 
     private ArrayList<Cell> map;
 
     private int scale;
 
+    /**
+     * Construit un nouvel objet MapLoader en chargeant une carte à partir d'un fichier JSON spécifié.
+     *
+     * @param filepath Le chemin du fichier JSON contenant les données de la carte.
+     * @param scale L'échelle de la carte, utilisée pour déterminer la taille des cellules.
+     * @param type Le type de carte à charger ("LEVEL" ou "WORLDMAP").
+     */
     public MapLoader(String filepath, int scale, String type){
         this.map = new ArrayList<>();
         this.scale = scale;
         loadMap(filepath, type);
     }
 
+    /**
+     * Construit un nouvel objet MapLoader en utilisant une liste de cellules existante.
+     *
+     * @param list La liste des cellules composant la carte.
+     * @param scale L'échelle de la carte, utilisée pour déterminer la taille des cellules.
+     */
     public MapLoader(ArrayList<Cell> list, int scale){
         this.map = new ArrayList<>(list);
         this.scale = scale;
     }
 
 
+    /**
+     * Charge une carte à partir d'un fichier JSON en fonction du type spécifié.
+     * Si le type est "LEVEL", la carte est construite en parsant le JSON et en créant les cellules correspondantes.
+     *
+     * @param filepath Le chemin du fichier JSON contenant les données de la carte.
+     * @param type Le type de carte à charger ("LEVEL" ou "WORLDMAP").
+     */
     private void loadMap(String filepath, String type){
 
 
@@ -94,15 +118,30 @@ public class MapLoader implements Iterable<Cell>{
 
     }
 
+    /**
+     * Retourne la liste des cellules composant la carte.
+     *
+     * @return La liste des cellules de la carte.
+     */
     public ArrayList<Cell> getMap() {
        return this.map;
     }
 
+    /**
+     * Définit une nouvelle liste de cellules pour la carte.
+     *
+     * @param c La nouvelle liste de cellules à utiliser pour la carte.
+     */
     public void setMap (ArrayList<Cell> c) {
         this.map = c;
     }
 
 
+    /**
+     * Retourne un itérateur pour parcourir les cellules de la carte.
+     *
+     * @return Un itérateur sur les cellules de la carte.
+     */
     @Override
     public Iterator<Cell> iterator() {
         return this.map.iterator();

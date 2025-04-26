@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Classe utilitaire pour gérer la connexion à la base de données MySQL et effectuer des opérations CRUD.
+ * Cette classe fournit des méthodes pour se connecter à la base de données, ajouter des scores et récupérer des
+ * informations sur les joueurs.
+ */
 public class DbConnection {
 
     public static final String BDD = "scoreszombie_bdd";
@@ -17,6 +22,11 @@ public class DbConnection {
     //INSERT INTO score (nomjoueur, temps, idniveau, coderang, points) VALUES
     //('GREG', '18:00:00', 'OUT1', 'A', 210),
 
+    /**
+     * Établit une connexion à la base de données MySQL en utilisant les informations de connexion spécifiées.
+     *
+     * @return Un objet Connection représentant la connexion à la base de données, ou null si la connexion échoue.
+     */
     public static Connection getConnection() {
         Connection conn = null;
 
@@ -33,6 +43,13 @@ public class DbConnection {
         return conn;
     }
 
+    /**
+     * Ajoute un score à la table "score" dans la base de données.
+     * Le score ajouté est prédéfini avec des valeurs spécifiques pour le nom du joueur, le temps,
+     * l'identifiant du niveau, le code du rang et les points.
+     *
+     * @throws SQLException Si la connexion à la base de données échoue ou si une erreur SQL se produit.
+     */
     public static void dbAddScore() {
         try {
 
@@ -64,6 +81,13 @@ public class DbConnection {
     }
 
 
+    /**
+     * Récupère et affiche les informations des joueurs pour un niveau spécifique à partir de la base de données.
+     * Les informations incluent le nom du joueur, les points, le code du rang, le libellé du niveau et le temps.
+     *
+     * @param idMap L'identifiant du niveau pour lequel récupérer les joueurs.
+     * @throws SQLException Si la connexion à la base de données échoue ou si une erreur SQL se produit.
+     */
     public static void dbGetPlayers(String idMap){
         try {
 

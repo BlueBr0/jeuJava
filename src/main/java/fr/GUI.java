@@ -29,6 +29,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
+/**
+ * Classe représentant l'interface graphique du jeu.
+ * Elle gère l'affichage des éléments graphiques et textuels, ainsi que l'interaction avec l'utilisateur.
+ */
 public class GUI implements ActionListener {
 
     private JFrame frame;
@@ -54,12 +58,25 @@ public class GUI implements ActionListener {
     private ArrayList<String> cmdsHistory = new ArrayList<String>();
 
 
+    /**
+     * Construit une nouvelle interface graphique pour le jeu.
+     * Initialise les composants de l'interface et associe une instance du jeu.
+     *
+     * @param j L'instance du jeu à associer à cette interface.
+     * @throws IOException Si une erreur survient lors du chargement des ressources.
+     */
     public GUI(Jeu j) throws IOException {
         creerGUI();
         this.jeuInstance = j;
     }
 
 
+    /**
+     * Crée et configure l'interface graphique du jeu.
+     * Initialise la fenêtre principale, les panneaux, les polices et les composants d'entrée/sortie.
+     *
+     * @throws IOException Si une erreur survient lors du chargement des ressources.
+     */
     //Ajouter la classe Loader
     public void creerGUI() throws IOException {
         frame = new JFrame("Jeu");
@@ -165,20 +182,39 @@ public class GUI implements ActionListener {
     }
 
 
+    /**
+     * Méthode appelée lorsqu'une action est effectuée, comme l'appui sur Entrée dans le champ de texte.
+     * Exécute la commande saisie par l'utilisateur.
+     *
+     * @param e L'événement d'action qui a déclenché cette méthode.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         executerCommande();
     }
 
+    /**
+     * Affiche un texte donné dans la zone de texte de l'interface.
+     *
+     * @param s Le texte à afficher.
+     */
     public void afficherTexte(String s){
         this.texte.append(s);
         afficher();
     }
 
+    /**
+     * Ajoute une nouvelle ligne à la zone de texte de l'interface.
+     */
     public void afficher(){
         this.texte.append("\r\n");
     }
 
+    /**
+     * Active ou désactive l'édition dans le champ de texte d'entrée.
+     *
+     * @param ok true pour activer l'édition, false pour la désactiver.
+     */
     public void enable(boolean ok) {
         this.entree.setEditable(ok);
         if ( ! ok )
@@ -188,18 +224,31 @@ public class GUI implements ActionListener {
     //Gérer les commandes
 
 
+    /**
+     * Affiche la carte du monde dans le panneau graphique.
+     */
     public void afficherCarte(){
         this.drawPanel.changeMapJSON("", "WORLDMAP");
     }
 
+    /**
+     * Affiche la carte de la boutique dans le panneau graphique.
+     */
     public void afficherShop(){
         this.drawPanel.changeMapJSON("", "SHOP");
     }
 
+    /**
+     * Affiche un niveau de jeu dans le panneau graphique.
+     */
     public void afficherNiveau(){
         this.drawPanel.changeMapJSON("/Data/MapsTest.json", "LEVEL");
     }
 
+    /**
+     * Exécute une commande saisie par l'utilisateur.
+     * Lit la commande depuis le champ de texte, l'affiche dans la zone de texte, et la traite via l'instance du jeu.
+     */
     private void executerCommande() {
         String commandeLue = entree.getText();
         if (!Objects.equals(commandeLue, "")){
@@ -222,10 +271,20 @@ public class GUI implements ActionListener {
     }
 
 
+    /**
+     * Met à jour l'affichage du niveau avec une nouvelle liste de cellules.
+     *
+     * @param list La nouvelle liste de cellules représentant le niveau.
+     */
     public void redessinerLevel(ArrayList<Cell> list){
         this.drawPanel.changeMapArray(list);
     }
 
+    /**
+     * Retourne la liste des cellules du niveau actuellement affiché.
+     *
+     * @return La liste des cellules du niveau.
+     */
     public ArrayList<Cell> getNiveau(){
         return new ArrayList<>(this.drawPanel.map.getMap());
     }

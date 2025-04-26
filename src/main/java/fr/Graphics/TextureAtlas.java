@@ -7,6 +7,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe représentant un atlas de textures, utilisé pour charger et stocker des images à partir de fichiers.
+ * Chaque texture est associée à une clé permettant de la récupérer facilement pour le rendu graphique.
+ */
 public class TextureAtlas {
 
     public HashMap<String, BufferedImage> textures = new HashMap<>();
@@ -26,6 +30,12 @@ public class TextureAtlas {
     private  final String wp = "WORLDMAP";
 
 
+    /**
+     * Construit un nouvel atlas de textures en chargeant les images à partir des chemins spécifiés.
+     * Chaque image est associée à une clé et stockée dans une carte (HashMap) pour un accès rapide.
+     *
+     * @throws IOException Si une image n'est pas trouvée ou si une erreur survient lors du chargement des images.
+     */
     public TextureAtlas() throws IOException {
 
         names.put(wallC, "/Sprites/SpriteWallCorner.png");

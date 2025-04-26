@@ -6,6 +6,10 @@ import fr.Map.Cells.Cell;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * Classe principale représentant le jeu.
+ * Elle gère l'état du jeu, les interactions avec l'interface graphique, et les commandes du joueur.
+ */
 public class Jeu {
 
     public Zone[] zones;
@@ -22,11 +26,19 @@ public class Jeu {
     private boolean inCombat = false;
 
     private ArrayList<Cell> currentLevelCells;
-    
+
+    /**
+     * Construit une nouvelle instance du jeu sans interface graphique associée.
+     */
     public Jeu() {
         gui = null;
     }
 
+    /**
+     * Associe une interface graphique au jeu et initialise l'affichage.
+     *
+     * @param g L'interface graphique à associer.
+     */
     public void setGUI( GUI g) {
         gui = g;
         afficherMessageDeBienvenue();
@@ -35,12 +47,21 @@ public class Jeu {
 
 
 
+    /**
+     * Affiche un message de bienvenue dans l'interface graphique.
+     */
     private void afficherMessageDeBienvenue() {
         gui.afficherTexte("Bienvenue !");
         gui.afficherTexte("Tapez '?' pour obtenir de l'aide.");
         //afficherLocalisation();
     }
 
+    /**
+     * Traite une commande saisie par l'utilisateur.
+     * Exécute l'action correspondante en fonction de la commande.
+     *
+     * @param commandeLue La commande saisie par l'utilisateur.
+     */
     public void traiterCommande(String commandeLue) {
         switch (commandeLue.toUpperCase()) {
             case "?" : case "AIDE" :
@@ -99,6 +120,11 @@ public class Jeu {
         }
     }
 
+    /**
+     * Retourne la cellule où se trouve le joueur dans le niveau actuel.
+     *
+     * @return La cellule du joueur, ou null si non trouvée.
+     */
     private Cell getPlayerCell(){
         Cell cell = null;
         for (Cell c : currentLevelCells){
@@ -110,6 +136,13 @@ public class Jeu {
         return cell;
     }
 
+    /**
+     * Retourne la cellule suivante en fonction des coordonnées spécifiées.
+     *
+     * @param x La coordonnée x de la cellule suivante.
+     * @param y La coordonnée y de la cellule suivante.
+     * @return La cellule suivante, ou null si non trouvée.
+     */
     private Cell getNextCell(int x, int y){
         Cell cell = null;
         for (Cell c : currentLevelCells){
@@ -121,10 +154,19 @@ public class Jeu {
         return cell;
     }
 
+    /**
+     * Démarre un combat. (Méthode non implémentée)
+     */
     public void beginCombat(){
 
     }
 
+    /**
+     * Échange les positions de deux cellules dans la liste des cellules du niveau actuel.
+     *
+     * @param index1 L'index de la première cellule.
+     * @param index2 L'index de la deuxième cellule.
+     */
     private void swapCells(int index1, int index2){
         Cell cell1 = currentLevelCells.get(index1);
         Cell cell2 = currentLevelCells.get(index2);
@@ -142,6 +184,12 @@ public class Jeu {
         cell2.setPosition(tmpX, tmpY, tmpXG, tmpYG);
     }
 
+    /**
+     * Retourne l'index d'une cellule dans la liste des cellules du niveau actuel.
+     *
+     * @param rc La cellule dont on veut obtenir l'index.
+     * @return L'index de la cellule, ou -1 si non trouvée.
+     */
     private int getCellIndex(Cell rc){
         for (int i = 0; i<this.currentLevelCells.size(); i++){
             if (this.currentLevelCells.get(i).equals(rc)){
@@ -151,6 +199,13 @@ public class Jeu {
         return -1;
     }
 
+    /**
+     * Effectue le mouvement du joueur vers une cellule suivante.
+     * Gère les interactions avec les différents types de cellules (murs, ennemis, butin, etc.).
+     *
+     * @param playerCell La cellule actuelle du joueur.
+     * @param nextCell La cellule suivante vers laquelle le joueur souhaite se déplacer.
+     */
     private void doMovement(Cell playerCell, Cell nextCell){
 
         System.out.println("test");
@@ -184,6 +239,12 @@ public class Jeu {
         }
     }
 
+    /**
+     * Exécute une commande de mouvement si le joueur est dans un niveau.
+     * Met à jour la position du joueur en fonction de la commande.
+     *
+     * @param comm La commande de mouvement.
+     */
     private void faireCommande(String comm){
         if (this.inLevel){
             Cell playerCell = getPlayerCell();
@@ -227,6 +288,11 @@ public class Jeu {
 
     }
 
+    /**
+     * Déplace le joueur vers une zone spécifiée si elle est déverrouillée et si le joueur est sur la carte du monde.
+     *
+     * @param z La zone vers laquelle le joueur souhaite se déplacer.
+     */
     private void allerDansZone(Zone z){
         if (this.inWorldMap){
             if (z.isLoocked()){
@@ -250,11 +316,17 @@ public class Jeu {
 
     }
 
+    /**
+     * Termine le jeu en affichant un message d'au revoir et en désactivant l'interface graphique.
+     */
     private void terminer() {
         gui.afficherTexte( "Au revoir...");
         gui.enable( false);
     }
 
+    /**
+     * Commence le jeu en affichant la carte du monde si le joueur est dans le menu principal.
+     */
     private void commencer(){
         if (this.inMenu){
             gui.afficherCarte();
@@ -272,6 +344,11 @@ public class Jeu {
 
     }
 
+    /**
+     * Réinitialise tous les états du jeu à false, sauf un état spécifié.
+     *
+     * @param a L'état à définir sur true.
+     */
     private void setAllFalseBut(boolean a){
         this.inWorldMap = false;
         this.inCamp = false;
@@ -281,6 +358,9 @@ public class Jeu {
         a = true;
     }
 
+    /**
+     * Affiche les commandes disponibles et leurs descriptions dans l'interface graphique.
+     */
     private void afficherAide() {
         gui.afficherTexte("Etes-vous perdu ?");
         gui.afficherTexte("Les commandes autorisees sont :");
@@ -288,14 +368,23 @@ public class Jeu {
 
     }
 
+    /**
+     * Affiche les statistiques du joueur dans l'interface graphique.
+     */
     private void afficherJoueurStats(){
         gui.afficherTexte(this.joueur.toString());
     }
 
+    /**
+     * Affiche la zone actuelle du joueur dans l'interface graphique.
+     */
     private void afficherZoneActuelle(){
         gui.afficherTexte("Vous etes dans : " + this.zoneCourante.toString());
     }
 
+    /**
+     * Initialise les zones du jeu et définit la zone courante.
+     */
     private void creerCarte() {
         this.zones = new Zone [7];
         this.zones[0] = new Zone("SHOP", false);
@@ -313,6 +402,11 @@ public class Jeu {
         this.zones[4].setUnlocks(this.zones[5]);
     }
 
+    /**
+     * Affiche la zone spécifiée. (Méthode non implémentée)
+     *
+     * @param z La zone à afficher.
+     */
     private void afficherCurrentZone(Zone z){
 
     }

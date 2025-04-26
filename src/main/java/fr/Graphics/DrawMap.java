@@ -9,6 +9,11 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Classe responsable du dessin de la carte sur un JPanel.
+ * Elle charge la carte à partir d'un fichier JSON ou d'une liste de cellules,
+ * et utilise un atlas de textures pour dessiner les différents éléments de la carte.
+ */
 public class DrawMap extends JPanel {
 
     public MapLoader map;
@@ -19,6 +24,13 @@ public class DrawMap extends JPanel {
     //Taille par défaut
     private final int scale = 50;
 
+    /**
+     * Construit un nouvel objet DrawMap pour dessiner une carte à partir d'un fichier JSON.
+     * Initialise également l'atlas de textures utilisé pour dessiner les éléments de la carte.
+     *
+     * @param mapJsonFile Le chemin du fichier JSON contenant les données de la carte.
+     * @param type Le type de carte à dessiner ("LEVEL" ou "WORLDMAP").
+     */
     public DrawMap(String mapJsonFile, String type) {
         try {
             this.currentType = type;
@@ -30,17 +42,37 @@ public class DrawMap extends JPanel {
     }
 
 
+    /**
+     * Change la carte actuellement dessinée en chargeant un nouveau fichier JSON.
+     * Met à jour le type de carte et redessine le panneau.
+     *
+     * @param mapJsonFile Le chemin du nouveau fichier JSON contenant les données de la carte.
+     * @param type Le type de la nouvelle carte.
+     */
     public void changeMapJSON(String mapJsonFile, String type){
         this.currentType = type;
         map = new MapLoader(mapJsonFile, scale, type);
         repaint();
     }
 
+    /**
+     * Change la carte actuellement dessinée en utilisant une liste de cellules.
+     * Met à jour la carte et redessine le panneau.
+     *
+     * @param list La liste des cellules représentant la nouvelle carte.
+     */
     public void changeMapArray(ArrayList<Cell> list){
         this.map.setMap(list);
         repaint();
     }
 
+    /**
+     * Dessine la carte sur le JPanel en utilisant les textures appropriées pour chaque type de cellule.
+     * Si le type de carte est "LEVEL", dessine chaque cellule individuellement.
+     * Si le type de carte est "WORLDMAP", dessine une image unique pour la carte du monde.
+     *
+     * @param g L'objet Graphics utilisé pour dessiner sur le JPanel.
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
