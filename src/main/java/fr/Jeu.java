@@ -53,6 +53,7 @@ public class Jeu {
     private void afficherMessageDeBienvenue() {
         gui.afficherTexte("Bienvenue !");
         gui.afficherTexte("Tapez '?' pour obtenir de l'aide.");
+        gui.afficherTexte("\nEcrivez 'commencer' pour commencer votre aventure.");
         //afficherLocalisation();
     }
 
